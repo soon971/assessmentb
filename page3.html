@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MULAH - Your Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Poetsen+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Poetsen One", sans-serif;
+            font-style: normal;
+            margin: 0;
+            padding: 0;
+            background-color: #ff7800;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            width: 640px;
+            height: auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            border-radius: 15px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        }
+        .logo {
+            font-family: "Poetsen One", sans-serif;
+            font-style: normal;
+            color: #ff7800;
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 20px; 
+        }
+        .welcome-message {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h2 {
+            font-family: "Poetsen One", sans-serif;
+            font-style: normal;
+            color: #555;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .data-item {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+            font-size: 1.1em;
+            width: 100%; 
+            padding-bottom: 15px; 
+            border-bottom: 1px solid #eee; 
+        }
+        .data-item:last-child {
+            border-bottom: none; 
+            padding-bottom: 0; 
+            margin-bottom: 0; 
+        }
+        .data-label {
+            font-weight: bold;
+            color: #777;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .powered-by {
+            color: #f4f4f4; 
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+        .powered-by a {
+            color: #fff; 
+            text-decoration: none;
+        }
+        .powered-by a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">M U L A H</div>
+        <div id="welcomeMessage" class="welcome-message"></div>
+        <h2>Your Information</h2>
+        <div id="userData">
+            <div class="data-item">
+                <span class="data-label">Phone Number:</span>
+                <span id="displayPhone"></span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">Name:</span>
+                <span id="displayName"></span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">Email:</span>
+                <span id="displayEmail"></span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">Birthday:</span>
+                <span id="displayBirthday"></span>
+            </div>
+        </div>
+        <div class="powered-by">Powered by <a href="https://MulahRewards.com">MulahRewards.com</a></div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const phoneNumber = urlParams.get('phone');
+        const name = urlParams.get('name');
+        const birthday = urlParams.get('birthday');
+        const email = urlParams.get('email');
+
+        document.getElementById('displayPhone').textContent = phoneNumber || 'N/A';
+        document.getElementById('displayName').textContent = name ? decodeURIComponent(name) : 'N/A';
+        document.getElementById('displayEmail').textContent = email ? decodeURIComponent(email) : 'N/A';
+        document.getElementById('displayBirthday').textContent = birthday ? decodeURIComponent(birthday) : 'N/A';
+
+        const welcomeMessageDiv = document.getElementById('welcomeMessage');
+        if (name) {
+            welcomeMessageDiv.textContent = `Welcome ${decodeURIComponent(name)} !`;
+        }
+    </script>
+</body>
+</html>

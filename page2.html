@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MULAH - Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Poetsen+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Poetsen One", sans-serif;
+            font-style: normal;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            width: 640px;
+            height: auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        .logo {
+            color: #ff7800;
+            text-align: center;
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-family: "Poetsen One", sans-serif;
+            font-style: normal;
+        }
+        h2 {
+            color: #555;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: left;
+            font-family: "Poetsen One", sans-serif;
+            font-style: normal;
+            
+        }
+        p {
+            color: #777;
+            margin-bottom: 30px;
+            text-align: left;
+            font-style: italic;
+        }
+
+        .validation-error {
+        color: red;
+        font-size: 0.8em;
+        margin-top: 5px;
+        font-style: italic; 
+        }
+
+        .input-group {
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .birthday-group {
+            display: flex;
+            gap: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        .birthday-group select {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5.4%200-10.5%202.2-14.3%205.6a17.6%2017.6%200%200%200-1.3%2018.2l241.3%20241.3c4.9%204.9%2011.4%207.7%2018.2%207.7s13.3-2.8%2018.2-7.7l241.3-241.3c4.9-4.9%207.7-11.4%207.7-18.2%200-6.7-2.7-13.2-7.7-18.2z%22/%3E%3C/svg%3E');
+            background-repeat: no-repeat;
+            background-position: right .7em top 50%;
+            background-size: .65em auto;
+        }
+        .birthday-group select::-ms-expand {
+            display: none;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            width: 80%;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        .validation-error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #ff7800;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+            width: 80%;
+        }
+        button:hover {
+            background-color: #e06a00;
+        }
+        .powered-by {
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+        .powered-by a {
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .powered-by a:hover {
+            text-align: center;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">M U L A H</div>
+        <h2>Registration</h2>
+        <p>Please fill up your details.</p>
+
+        <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter Name">
+            <div id="nameError" class="validation-error">*Please insert a name.</div>
+        </div>
+
+        <div class="input-group">
+            <label for="birthday">Birthday</label>
+            <div class="birthday-group">
+                <select id="dd">
+                    <option value="">DD</option>
+                    </select>
+                <select id="mm">
+                    <option value="">MM</option>
+                    </select>
+                <select id="yyyy">
+                    <option value="">YYYY</option>
+                    </select>
+            </div>
+            <div id="birthdayError" class="validation-error">*Please insert your birthday.</div>
+        </div>
+
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Email Address">
+            <div class="checkbox-group">
+                <input type="checkbox" id="noEmail">
+                <label for="noEmail" style="margin-bottom: 0; font-size: 0.9em;">No email address</label>
+            </div>
+            <div id="emailError" class="validation-error">*Please insert a valid email address.</div>
+        </div>
+
+        <button onclick="submitDetails()">Continue</button>
+
+        <div class="powered-by">Powered by <a href="https://MulahRewards.com">MulahRewards.com</a></div>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById('name');
+        const daySelect = document.getElementById('dd');
+        const monthSelect = document.getElementById('mm');
+        const yearSelect = document.getElementById('yyyy');
+        const emailInput = document.getElementById('email');
+        const noEmailCheckbox = document.getElementById('noEmail');
+        const nameError = document.getElementById('nameError');
+        const birthdayError = document.getElementById('birthdayError');
+        const emailError = document.getElementById('emailError');
+
+        // Populate day options
+        for (let i = 1; i <= 31; i++) {
+            const option = document.createElement('option');
+            option.value = String(i).padStart(2, '0');
+            option.textContent = String(i).padStart(2, '0');
+            daySelect.appendChild(option);
+        }
+
+        // Populate month options
+        const months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+        months.forEach(month => {
+            const option = document.createElement('option');
+            option.value = month;
+            option.textContent = month;
+            monthSelect.appendChild(option);
+        });
+
+        // Populate year options (adjust range as needed)
+        const currentYear = new Date().getFullYear();
+        for (let i = currentYear; i >= currentYear - 100; i--) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            yearSelect.appendChild(option);
+        }
+
+        // Initially hide error messages
+        nameError.style.display = 'none';
+        birthdayError.style.display = 'none';
+        emailError.style.display = 'none';
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function submitDetails() {
+            let isValid = true;
+            let selectedDay = daySelect.value;
+            let selectedMonth = monthSelect.value;
+            let selectedYear = yearSelect.value;
+            const email = emailInput.value.trim();
+            const hasNoEmail = noEmailCheckbox.checked;
+
+            if (nameInput.value.trim() === "") {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+            if (selectedDay === "" || selectedMonth === "" || selectedYear === "") {
+                birthdayError.textContent = "*Please select your birthday.";
+                birthdayError.style.display = 'block';
+                isValid = false;
+            } else {
+                birthdayError.style.display = 'none';
+            }
+
+            if (!hasNoEmail) {
+                if (email === "") {
+                    emailError.textContent = "*Please insert a valid email address.";
+                    emailError.style.display = 'block';
+                    isValid = false;
+                } else if (!validateEmail(email)) {
+                    emailError.textContent = "*Please insert a valid email address.";
+                    emailError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    emailError.style.display = 'none';
+                }
+            } else {
+                emailError.style.display = 'none'; 
+            }
+
+            if (isValid) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const phoneNumber = urlParams.get('phone');
+                const name = nameInput.value;
+                const birthday = `${selectedDay}/${selectedMonth}/${selectedYear}`;
+                const finalEmail = hasNoEmail ? '' : email;
+
+                window.location.href = `page3.html?phone=${encodeURIComponent(phoneNumber)}&name=${encodeURIComponent(name)}&birthday=${encodeURIComponent(birthday)}&email=${encodeURIComponent(finalEmail)}`;
+            }
+        }
+    </script>
+</body>
+</html>
